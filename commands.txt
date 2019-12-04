@@ -1,0 +1,86 @@
+# docker container --help
+acesso ao help referentes a container
+
+# docker image --help
+acesso ao help referentes a imgens
+
+# docker volume --help
+acesso ao help referentes a volumes
+
+# docker container ps || docker container ls
+mostra a lista de container ativos no momento
+
+# docker container ps -a || docker container ls -a
+mostra a lista de containers queforam executados independentes do seu estado atual
+
+# docker container run --rm [image-name]
+executa o container e logo após a execução exclui o container
+
+# docker container stop [CONTAINER ID]
+para um container em execução
+
+# docker container run -it [image-name] example: docker container run -it debian bash
+executa o container com as flags [i, t]
+
+# docker container -at [image-name] example: docker container -at mydeb
+executa um container já existente com as flags [a, t]
+
+# docker container run -d --name ex-daemon-basic -p 8080:80 -v %cd%/html:/usr/share/nginx/html nginx
+executa um container no modo daemon
+
+# docker exec -it CONTAINER_ID bash
+acessando o terminal de um container em execução
+
+# docker rm
+remove um container
+
+# docker rmi || docker image rm
+remove uma imagem
+
+# docker image ls
+mostra a lista de todas as imagens disponiveis
+
+# docker image pull IMAGE_NAME
+faz o download de uma imagem
+
+# docker image inspect IMAGE_NAME
+exibe as caracteristicas da imagem
+
+# docker image inspect --format="{{ index .ContainerConfig.Labels \"maintainer\" }}" IMAGE NAME_IMAGE
+inspeciona as informações de uma imagem com a tag format onde é possivel extrair apenas as informações
+necessárias
+
+# docker image tag IMAGE_NAME name
+cria uma nova tag para uma determinada imagem
+
+# docker image build -t NAME_IMAGE .
+gera uma nova imagem com a tag name definida e o . (dot) serve
+para que seja usado o arquivo Dockerfile local
+
+# docker image build --build-arg ARGUMENTO=VALOR -t TAG_NAME . 
+gera uma nova imagem com os parametros personalizados
+
+# docker container run IMAGE_NAME bash -c "echo $ENV_NAME"
+através desse comando conseguesse-se imprimir na tela o argumento contido na ENV
+
+===== flags =====
+
+--interactive = modo interativo
+
+-t = acesso ao terminal do container
+
+--attach = Attach, serve para ter acesso ao terminado do container, serve para ter acesso ao terminar de containers
+já existentes
+
+-p = Serve para o mapeamento de portas, ex: docker container run -p 8080:80 nginx 
+significa que será iniciado um container que terá como porta de entrada a porta 8080 e o trafégo será redirecionado
+para a porta 80 interna;
+
+-v = Serve para o mapeamento de volumes entre o container e a maquina de execução 
+exemplo : docker container run -p 8080:80 -v %cd%/html:/usr/share/nginx/html nginx
+o uso do %cd% é feito no windows para pegar a pasta atual no linux ou mac usa-se o ${pwd}
+
+--name = Define o nome que será dado ao container
+
+===== Obs =====
+  O metodo run sempre cria novos containers
