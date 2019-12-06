@@ -63,6 +63,21 @@ gera uma nova imagem com os parametros personalizados
 # docker container run IMAGE_NAME bash -c "echo $ENV_NAME"
 através desse comando conseguesse-se imprimir na tela o argumento contido na ENV
 
+# docker container run -it --volumes-from=CONTAINER_NAME IMAGE_NAME COMMAND
+através do comando --volumes-from é possivel acessar os volumes definidos em outros containers
+
+# docker network ls
+exibe as redes disponiveis
+
+# docker container run -d --net none IMAGE_NAME
+cria um container com o tipo none de rede onde ele não vai possuir conexão com a rede
+
+# docker network connect NETWORK_NAME CONTAINER_NAME
+conecta um determinado container a uma rede especifica
+
+# docker-compose up
+executa todos os serviços configurados no docker compose
+
 ===== flags =====
 
 --interactive = modo interativo
@@ -81,6 +96,10 @@ exemplo : docker container run -p 8080:80 -v %cd%/html:/usr/share/nginx/html ngi
 o uso do %cd% é feito no windows para pegar a pasta atual no linux ou mac usa-se o ${pwd}
 
 --name = Define o nome que será dado ao container
+
+-c = Executa um comando definido exemplo> -c cat log/http-server.log
+
+-d = Modo Deaemon
 
 ===== Obs =====
   O metodo run sempre cria novos containers
