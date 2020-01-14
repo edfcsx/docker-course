@@ -78,6 +78,18 @@ conecta um determinado container a uma rede especifica
 # docker-compose up
 executa todos os serviços configurados no docker compose
 
+# docker-compose up -d
+executa em modo daemon
+
+# docker-compose up --scale SERVICE_NAME=QTD
+escala um determinando servico conforme a quantidade informada
+
+# docker-compose logs -f -t 
+mostra o log da execução do composer
+
+# docker-compose logs -f -t SERVICE_NAME
+mostra o log da execução do composer de determinado serviço
+
 ===== flags =====
 
 --interactive = modo interativo
@@ -101,5 +113,13 @@ o uso do %cd% é feito no windows para pegar a pasta atual no linux ou mac usa-s
 
 -d = Modo Deaemon
 
+--scale = escala uma determinada quantidade de serviços
+
 ===== Obs =====
   O metodo run sempre cria novos containers
+
+
+Comandos extras
+
+# docker-compose exec db psql -U postgres -d email_sender -c 'SELECT * FROM emails"
+comando para executar uma ação em determinada base de dados postgresql
